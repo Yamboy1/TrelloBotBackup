@@ -118,6 +118,7 @@ module.exports = (client) => { return {
 		},
 		webhook: function(token, id){
 			return new Promise((resolve,reject)=>{
+                                console.log(client.config.webhook_url);
 				request.post(`https://api.trello.com/1/webhook?key=${client.apiKey("trellokey")}&token=${token}`)
 				.send({ idModel: id, callbackURL: client.config.webhook_url, description: "Trello Bot Webhook" })
 				.end((err, res)=>{
